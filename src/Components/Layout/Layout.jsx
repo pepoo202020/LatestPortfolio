@@ -7,9 +7,9 @@ import FloatingBottomBar from "../FloatingBottomBar/FloatingBottomBar";
 const Layout = () => {
   return (
     <div className="flex justify-between items-center h-screen bg-[#E4E6EB]">
-      <RightSideBar />
-      <Outlet />
       <LeftSideBar />
+      <Outlet />
+      <RightSideBar />
       <FloatingBottomBar />
     </div>
   );
