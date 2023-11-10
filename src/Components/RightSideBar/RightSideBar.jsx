@@ -3,6 +3,7 @@ import { ModeContext } from "../../contexts/modeContext";
 import ModeButton from "./ModeButton";
 import ColorsButton from "./ColorsButton";
 import { ColorModeContext } from "../../contexts/colorModeContext";
+import NavBarButtons from "./NavBarButtons";
 
 const RightSideBar = () => {
   const { currentMode, setCurrentMode } = useContext(ModeContext);
@@ -11,7 +12,8 @@ const RightSideBar = () => {
     setCurrentMode((prev) => !prev);
   };
 
-  const { setCurrentColorMode } = useContext(ColorModeContext);
+  const { currentColorMode, setCurrentColorMode } =
+    useContext(ColorModeContext);
 
   return (
     <div
@@ -19,7 +21,7 @@ const RightSideBar = () => {
         currentMode ? "bg-neutral-50" : "bg-black"
       } h-full px-[39px] pt-[50px] `}
     >
-      <div className="flex flex-col items-center justify-center gap-[25px]">
+      <div className="flex flex-col items-center justify-center gap-[25px] mb-[150px]">
         <ModeButton
           currentMode={currentMode}
           handleModeChanger={handleModeChanger}
@@ -30,6 +32,10 @@ const RightSideBar = () => {
           setCurrentColorMode={setCurrentColorMode}
         />
       </div>
+      <NavBarButtons
+        currentMode={currentMode}
+        currentColorMode={currentColorMode}
+      />
     </div>
   );
 };

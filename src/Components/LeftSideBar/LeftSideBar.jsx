@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import imageLogo from "../../Assets/image_logo.png";
 import facebookIcon from "../../Assets/icons/facebook.png";
 import linkedinIcon from "../../Assets/icons/linkedin.png";
