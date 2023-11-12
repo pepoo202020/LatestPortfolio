@@ -3,10 +3,30 @@ import { Tooltip } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 
 const colors = [
-  { name: "Yellow", value: "bg-yellow-500", borderColor: "border-yellow-500" },
-  { name: "Blue", value: "bg-blue-500", borderColor: "border-blue-500" },
-  { name: "Red", value: "bg-red-500", borderColor: "border-red-500" },
-  { name: "Green", value: "bg-green-500", borderColor: "border-green-500" },
+  {
+    name: "Yellow",
+    value: "bg-yellow-500",
+    borderColor: "border-yellow-500",
+    textColor: "text-yellow-500",
+  },
+  {
+    name: "Blue",
+    value: "bg-blue-500",
+    borderColor: "border-blue-500",
+    textColor: "text-blue-500",
+  },
+  {
+    name: "Red",
+    value: "bg-red-500",
+    borderColor: "border-red-500",
+    textColor: "text-red-500",
+  },
+  {
+    name: "Green",
+    value: "bg-green-500",
+    borderColor: "border-green-500",
+    textColor: "text-green-500",
+  },
 ];
 
 const ColorsButton = ({ currentMode, setCurrentColorMode }) => {

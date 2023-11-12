@@ -19,9 +19,10 @@ const RightSideBar = () => {
     <div
       className={`${
         currentMode ? "bg-neutral-50" : "bg-black"
-      } h-full px-[39px] pt-[50px] `}
+      } h-full px-[39px] pt-[50px] rounded-tl-3xl
+      rounded-bl-3xl`}
     >
-      <div className="flex flex-col items-center justify-center gap-[25px] mb-[150px]">
+      <div className="flex flex-col items-center justify-center gap-[25px] mb-[100px]">
         <ModeButton
           currentMode={currentMode}
           handleModeChanger={handleModeChanger}

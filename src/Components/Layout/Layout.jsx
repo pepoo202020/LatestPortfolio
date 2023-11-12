@@ -2,7 +2,6 @@ import React from "react";
 import RightSideBar from "../RightSideBar/RightSideBar";
 import { Outlet } from "react-router-dom";
 import LeftSideBar from "../LeftSideBar/LeftSideBar";
-import FloatingBottomBar from "../FloatingBottomBar/FloatingBottomBar";
 
 const Layout = () => {
   return (
@@ -10,7 +9,6 @@ const Layout = () => {
       <LeftSideBar />
       <Outlet />
       <RightSideBar />
-      <FloatingBottomBar />
     </div>
   );
 };

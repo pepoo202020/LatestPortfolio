@@ -62,7 +62,8 @@ const LeftSideBar = () => {
         pr-[45px]
         pl-[40px]
         pt-[20px]
-        
+        rounded-tr-3xl
+        rounded-br-3xl
       `}
     >
       {/*Inage Logo*/}

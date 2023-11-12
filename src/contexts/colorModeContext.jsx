@@ -10,6 +10,7 @@ export const ColorModeProvider = ({ children }) => {
     name: "Yellow",
     value: "bg-yellow-500",
     borderColor: "border-yellow-500",
+    textColor: "text-yellow-500",
   });
   const value = { currentColorMode, setCurrentColorMode };
   return (
