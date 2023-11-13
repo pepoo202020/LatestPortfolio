@@ -108,7 +108,7 @@ const NavBarButtons = ({ currentMode, currentColorMode }) => {
 
   return (
     <nav>
-      <div className="flex flex-col items-center justify-center gap-[43px]">
+      <div className="flex lg:flex-col items-center justify-center lg:gap-[43px] gap-2">
         {links.map((link, index) => (
           <Tooltip title={link.name} key={index}>
             <div className="iconDiv">

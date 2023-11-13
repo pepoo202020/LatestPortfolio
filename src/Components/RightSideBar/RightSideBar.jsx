@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ModeContext } from "../../contexts/modeContext";
 import ModeButton from "./ModeButton";
 import ColorsButton from "./ColorsButton";
@@ -19,10 +19,10 @@ const RightSideBar = () => {
     <div
       className={`${
         currentMode ? "bg-neutral-50" : "bg-black"
-      } h-full px-[39px] pt-[50px] rounded-tl-3xl
-      rounded-bl-3xl`}
+      } lg:h-full lg:w-fit lg:px-[39px] lg:pt-[50px] px-2 py-2 lg:rounded-tl-3xl
+      lg:rounded-bl-3xl w-full lg:relative absolute flex lg:flex-col lg:justify-start justify-center lg:gap-0 gap-2 bottom-0 lg:m-0 `}
     >
-      <div className="flex flex-col items-center justify-center gap-[25px] mb-[100px]">
+      <div className="flex lg:flex-col items-center justify-center lg:gap-[25px] gap-2 lg:mb-[100px]">
         <ModeButton
           currentMode={currentMode}
           handleModeChanger={handleModeChanger}

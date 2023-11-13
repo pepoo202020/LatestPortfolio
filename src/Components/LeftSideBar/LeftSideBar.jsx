@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import imageLogo from "../../Assets/image_logo.png";
 import facebookIcon from "../../Assets/icons/facebook.png";
 import linkedinIcon from "../../Assets/icons/linkedin.png";
@@ -13,6 +13,8 @@ import DownloadCv from "./DownloadCv";
 import { ModeContext } from "../../contexts/modeContext";
 import CustomDivider from "./CustomDivider";
 import { ColorModeContext } from "../../contexts/colorModeContext";
+import { Menu } from "@mui/icons-material";
+import DrawerLeft from "./DrawerLeft";
 
 const socials = [
   {
@@ -50,93 +52,118 @@ const socials = [
 const LeftSideBar = () => {
   const { currentMode } = useContext(ModeContext);
   const { currentColorMode } = useContext(ColorModeContext);
+  const [drawer, setDrawer] = useState(false);
+
+  const drawerHandler = () => {
+    setDrawer(true);
+  };
 
   return (
-    <div
-      className={`
-        ${currentMode ? "bg-white" : "bg-black"} 
-        h-full
-        flex
-        flex-col
-        items-center
-        pr-[45px]
-        pl-[40px]
-        pt-[20px]
-        rounded-tr-3xl
-        rounded-br-3xl
-      `}
-    >
-      {/*Inage Logo*/}
+    <Fragment>
+      <button
+        className={`lg:hidden block absolute top-5 right-5 z-50 ${
+          currentMode ? "bg-neutral-300" : "bg-gray-700"
+        } w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-transparent`}
+        onClick={drawerHandler}
+      >
+        <Menu className={`${currentColorMode.textColor} text-lg`} />
+      </button>
+      <DrawerLeft
+        currentColorMode={currentColorMode}
+        currentMode={currentMode}
+        drawer={drawer}
+        setDrawer={setDrawer}
+      />
+
       <div
         className={`
-        w-36
-        h-36
-        rounded-full
-        bg-[#E4E6EB]
-        relative
-        mb-[20px]
-        border-2
-        ${currentColorMode ? currentColorMode.borderColor : "border-yellow-500"}
-      `}
+      
+      hidden
+      ${currentMode ? "bg-white" : "bg-black"} 
+      h-full
+      lg:flex
+      flex-col
+      items-center
+      pr-[45px]
+      pl-[40px]
+      pt-[20px]
+      rounded-tr-3xl
+      rounded-br-3xl
+
+    `}
       >
-        <div className="w-full h-full overflow-hidden rounded-full">
-          <img src={imageLogo} alt="my_image logo" className="-mt-5" />
+        {/*Inage Logo*/}
+        <div
+          className={`
+      w-36
+      h-36
+      rounded-full
+      bg-[#E4E6EB]
+      relative
+      mb-[20px]
+      border-2
+      ${currentColorMode ? currentColorMode.borderColor : "border-yellow-500"}
+    `}
+        >
+          <div className="w-full h-full overflow-hidden rounded-full">
+            <img src={imageLogo} alt="my_image logo" className="-mt-5" />
+          </div>
+          <div className="w-4 h-4 absolute bottom-[10px] left-[115px] bg-lime-500 z-50 rounded-full shadow"></div>
         </div>
-        <div className="w-4 h-4 absolute bottom-[10px] left-[115px] bg-lime-500 z-50 rounded-full shadow"></div>
+        <h1
+          className={`${
+            currentMode ? "text-zinc-800" : "text-white"
+          } text-lg font-medium capitalize   leading-snug mb-[10px]`}
+        >
+          Abanob Shenoda
+        </h1>
+        <h5
+          className={`${currentMode ? "text-neutral-500" : "text-neutral-200"}
+      text-base
+      font-normal
+      capitalize
+      leading-normal
+      mb-[10px] `}
+        >
+          Full Stack Developer
+        </h5>
+        <div
+          className="
+        flex
+        items-center
+        gap-[15px]
+        mb-[20px]
+      "
+        >
+          {socials.map((social, index) => (
+            <SocialIcons
+              key={index}
+              title={social.name}
+              link={social.link}
+              icon={social.icon}
+              backgroundColor={currentColorMode.value}
+            />
+          ))}
+        </div>
+        <CustomDivider currentMode={currentMode} />
+        <BasicInfo
+          currentMode={currentMode}
+          backgroundColor={currentColorMode.value}
+        />
+        <CustomDivider currentMode={currentMode} />
+        <Languages
+          currentMode={currentMode}
+          backgroundColor={currentColorMode.value}
+          borderColor={currentColorMode.borderColor}
+        />
+        <CustomDivider currentMode={currentMode} />
+        <DownloadCv
+          currentMode={currentMode}
+          backgroundColor={currentColorMode.value}
+          borderColor={currentColorMode.borderColor}
+        />
       </div>
-      <h1
-        className={`${
-          currentMode ? "text-zinc-800" : "text-white"
-        } text-lg font-medium capitalize leading-snug mb-[10px]`}
-      >
-        Abanob Shenoda
-      </h1>
-      <h5
-        className={`${currentMode ? "text-neutral-500" : "text-neutral-200"}
-        text-base
-        font-normal
-        capitalize
-        leading-normal
-        mb-[10px]`}
-      >
-        Full Stack Developer
-      </h5>
-      <div
-        className="
-          flex
-          items-center
-          gap-[15px]
-          mb-[20px]
-        "
-      >
-        {socials.map((social, index) => (
-          <SocialIcons
-            key={index}
-            title={social.name}
-            link={social.link}
-            icon={social.icon}
-            backgroundColor={currentColorMode.value}
-          />
-        ))}
-      </div>
-      <CustomDivider currentMode={currentMode} />
-      <BasicInfo
-        currentMode={currentMode}
-        backgroundColor={currentColorMode.value}
-      />
-      <CustomDivider currentMode={currentMode} />
-      <Languages
-        currentMode={currentMode}
-        backgroundColor={currentColorMode.value}
-        borderColor={currentColorMode.borderColor}
-      />
-      <CustomDivider currentMode={currentMode} />
-      <DownloadCv
-        currentMode={currentMode}
-        backgroundColor={currentColorMode.value}
-        borderColor={currentColorMode.borderColor}
-      />
-    </div>
+    </Fragment>
   );
 };
 

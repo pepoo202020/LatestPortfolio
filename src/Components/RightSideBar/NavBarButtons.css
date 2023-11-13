@@ -4,10 +4,13 @@
 }
 
 .active {
-  width: 70px;
-  height: 70px;
-  padding: 11px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .active:hover {
@@ -21,10 +24,13 @@
 }
 
 .disActive {
-  width: 70px;
-  height: 70px;
-  padding: 11px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .disActive svg {
   color: black;
@@ -32,4 +38,17 @@
 
 .dark svg {
   color: white !important;
+}
+
+@media (min-width: 976px) {
+  .disActive {
+    width: 30px;
+    height: 30px;
+    padding: 11px;
+  }
+  .active {
+    width: 30px;
+    height: 30px;
+    padding: 11px;
+  }
 }

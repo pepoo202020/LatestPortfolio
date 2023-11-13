@@ -1,7 +1,6 @@
 import { ColorLens } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-
 const colors = [
   {
     name: "Yellow",
@@ -61,19 +60,35 @@ const ColorsButton = ({ currentMode, setCurrentColorMode }) => {
         </button>
       </Tooltip>
       {colorShow && (
-        <div
-          className={`${
-            currentMode ? "bg-black" : "bg-white"
-          } shadow rounded-3xl right-2 flex items-center justify-center gap-2 p-1 absolute -bottom-8`}
-        >
-          {colors.map((color, index) => (
-            <Tooltip title={`${color.name}`} key={index}>
-              <div
-                onClick={() => setCurrentColorMode(color)}
-                className={`w-5 h-5 cursor-pointer rounded-full ${color.value}`}
-              ></div>
-            </Tooltip>
-          ))}
+        <div>
+          <div
+            className={`${
+              currentMode ? "bg-black" : "bg-white"
+            }  shadow rounded-3xl hidden   lg:flex items-center justify-center gap-2 p-1 absolute -bottom-8 right-2 `}
+          >
+            {colors.map((color, index) => (
+              <Tooltip title={`${color.name}`} key={index}>
+                <div
+                  onClick={() => setCurrentColorMode(color)}
+                  className={`w-5 h-5 cursor-pointer rounded-full ${color.value}`}
+                ></div>
+              </Tooltip>
+            ))}
+          </div>
+          <div
+            className={`${
+              currentMode ? "bg-black" : "bg-white"
+            }  shadow rounded-3xl lg:hidden flex items-center justify-center gap-2 p-1 absolute -top-10 `}
+          >
+            {colors.map((color, index) => (
+              <Tooltip title={`${color.name}`} key={index}>
+                <div
+                  onClick={() => setCurrentColorMode(color)}
+                  className={`w-5 h-5 cursor-pointer rounded-full ${color.value}`}
+                ></div>
+              </Tooltip>
+            ))}
+          </div>
         </div>
       )}
     </div>
