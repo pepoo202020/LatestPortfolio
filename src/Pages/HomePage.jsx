@@ -30,11 +30,11 @@ const HomePage = () => {
   return (
     <div className="w-full h-full lg:px-[30px] lg:py-[30px] px-[15px] pt-[15px] pb-[60px]">
       <div
-        className={`rounded-3xl w-full h-full flex  lg:flex-nowrap flex-wrap lg:items-center items-start justify-center lg:gap-5 ${
+        className={`rounded-3xl w-full h-full flex lg:px-10 lg:overflow-hidden overflow-scroll  lg:flex-nowrap flex-wrap lg:items-center items-start justify-center lg:gap-5 ${
           currentMode ? "bg-white" : "bg-black"
         }`}
       >
-        <div className="flex lg:w-1/2 flex-col lg:items-start items-center lg:justify-start  justify-center">
+        <div className="flex lg:w-1/2 flex-col lg:items-start  items-center lg:justify-start  justify-center">
           <h1
             className={`${
               currentMode ? "text-zinc-800" : "text-white"
@@ -83,7 +83,7 @@ const HomePage = () => {
             </span>
           </Link>
         </div>
-        <div className="lg:w-1/2 w-10/12">
+        <div className="lg:w-1/2 w-10/12 flex items-center justify-center">
           <img src={imageHandler(currentColorMode.value)} alt="" />
         </div>
       </div>

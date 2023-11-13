@@ -42,13 +42,13 @@
 
 @media (min-width: 976px) {
   .disActive {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     padding: 11px;
   }
   .active {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     padding: 11px;
   }
 }
