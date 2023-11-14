@@ -83,7 +83,7 @@ const HomePage = () => {
             </span>
           </Link>
         </div>
-        <div className="lg:w-1/2 w-10/12 flex items-center justify-center">
+        <div className="lg:w-1/2 w-10/12 flex items-center justify-centerya">
           <img src={imageHandler(currentColorMode.value)} alt="" />
         </div>
       </div>
