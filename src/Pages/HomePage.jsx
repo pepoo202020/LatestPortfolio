@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   const { currentMode } = useContext(ModeContext);
   const { currentColorMode } = useContext(ColorModeContext);
-  console.log(currentColorMode);
   const imageHandler = (ColorMode) => {
     switch (ColorMode) {
       case "bg-yellow-500":

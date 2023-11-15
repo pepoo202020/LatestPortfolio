@@ -105,7 +105,7 @@ const SkillsPage = () => {
             Skills
           </h1>
           <Link
-            to={"http://localhost:3001/login"}
+            to={"/login"}
             className={`absolute top-1 left-1 ${currentColorMode.value} text-white lg:px-5 px-2 py-2 rounded-xl`}
           >
             Add New Skill
