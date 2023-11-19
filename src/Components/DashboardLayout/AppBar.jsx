@@ -1,20 +1,10 @@
-import { Menu } from "@mui/icons-material";
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { Toolbar, Typography } from "@mui/material";
 import React from "react";
 
-const AppBarDashboard = ({ open, toggleDrawer }) => {
+const AppBarDashboard = () => {
   return (
-    <AppBar position="absolute" open={open}>
-      <Toolbar sx={{ pr: "24px" }}>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          onClick={toggleDrawer}
-          sx={{ marginRight: "36px", ...(open && { display: "none" }) }}
-        >
-          <Menu />
-        </IconButton>
+    <div className="w-full  ">
+      <Toolbar>
         <Typography
           component="h1"
           variant="h6"
@@ -25,7 +15,7 @@ const AppBarDashboard = ({ open, toggleDrawer }) => {
           Admin Dashboard
         </Typography>
       </Toolbar>
-    </AppBar>
+    </div>
   );
 };
 

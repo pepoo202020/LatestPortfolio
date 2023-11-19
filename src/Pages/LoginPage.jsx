@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { loginWithEmailAndPassword } from "../Utils/Firebase";
 import { useNavigate } from "react-router-dom";
 
 const defaultFormValues = { email: "", password: "" };
@@ -31,11 +30,11 @@ const LoginPage = () => {
       alert("All Fields are required");
       return;
     }
-    try {
-      await loginWithEmailAndPassword(email, password);
-      navigate("/dashboard");
-    } catch (error) {
-      alert("Error in login", error);
+    if (email === "poposhosh23@gmail.com" && password === "pop202020") {
+      alert("Logged in Successfully");
+      navigate("/dashboard/main");
+    } else {
+      alert("Email or Password is wrong");
     }
   };
 

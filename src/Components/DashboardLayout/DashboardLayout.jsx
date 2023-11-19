@@ -1,16 +1,21 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Outlet } from "react-router-dom";
-import { Box, CssBaseline } from "@mui/material";
-import DrawerDashboard from "./DrawerDashboard";
+import DashboardSideBar from "./DashboardSideBar";
+import AppBarDashboard from "./AppBar";
+import BottomBar from "./BottomBar";
 
 const DashboardLayout = () => {
   return (
-    <Box sx={{ display: "flex", backgroundColor: "#E4E6EB", height: "100vh" }}>
-      <CssBaseline />
-
-      <DrawerDashboard />
-      <Outlet />
-    </Box>
+    <Fragment>
+      <div className="flex w-screen h-screen bg-slate-200">
+        <DashboardSideBar />
+        <div className="flex-1 flex flex-col w-fit items-center">
+          <AppBarDashboard />
+          <Outlet />
+        </div>
+        <BottomBar />
+      </div>
+    </Fragment>
   );
 };
 
