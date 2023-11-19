@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmdHEZXqQcN2QvaKx8vGIVY7vBhRh8API",
@@ -19,3 +20,5 @@ export const auth = getAuth();
 export const loginWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const db = getDatabase();

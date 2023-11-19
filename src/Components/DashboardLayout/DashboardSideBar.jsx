@@ -63,7 +63,6 @@ const DashboardSideBar = () => {
         pt-[20px]
         rounded-tr-3xl
         rounded-br-3xl
-        relative
         flex-col
         bg-clip-border
         rounded-xl
@@ -75,6 +74,8 @@ const DashboardSideBar = () => {
         p-4
         shadow-xl
         shadow-blue-gray-900/5
+        sticky
+        left-0
    "
       >
         <div

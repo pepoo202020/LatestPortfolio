@@ -3,7 +3,7 @@ import React from "react";
 
 const AppBarDashboard = () => {
   return (
-    <div className="w-full  ">
+    <div className="w-full  sticky top-0">
       <Toolbar>
         <Typography
           component="h1"

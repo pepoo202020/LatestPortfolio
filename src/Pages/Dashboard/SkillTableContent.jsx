@@ -1,5 +1,6 @@
 import { Delete, Edit } from "@mui/icons-material";
 import {
+  Avatar,
   Paper,
   Table,
   TableBody,
@@ -10,8 +11,9 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./SkillTable.css";
 
-const TableContent = ({
+const SkillTableContent = ({
   headNames,
   tableContent,
   editBtnHandler,
@@ -25,8 +27,8 @@ const TableContent = ({
             {headNames.map((name, index) => (
               <TableCell
                 key={index}
-                align={`${index === 1 ? "right" : "left"}`}
-                className={`${index === 1 ? "text-center" : ""}`}
+                align={`${index === 2 ? "right" : "left"}`}
+                className={`${index === 2 ? "text-center" : ""}`}
               >
                 {name}
               </TableCell>
@@ -40,20 +42,24 @@ const TableContent = ({
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {content.skillName}
+                <Avatar>{content.image}</Avatar>
+              </TableCell>
+              <TableCell component="th" scope="row">
+                {content.name}
               </TableCell>
               <TableCell align="right">
                 <Link
                   onClick={editBtnHandler}
-                  className={`p-2  bg-orange-500 text-white rounded-xl mr-2 `}
+                  className={`lg:p-2  p-1  bg-orange-500 text-white rounded-xl mr-2 `}
                 >
-                  <Edit /> <span className="lg:inline-block hidden">Edit</span>
+                  <Edit className="mobile" />
+                  <span className="lg:inline-block hidden">Edit</span>
                 </Link>
                 <Link
                   onClick={deleteBtnHandler}
-                  className="p-2  bg-red-500 text-white rounded-xl "
+                  className="lg:p-2  p-1 bg-red-500 text-white rounded-xl "
                 >
-                  <Delete />{" "}
+                  <Delete className="mobile" />{" "}
                   <span className="lg:inline-block hidden">Delete</span>
                 </Link>
               </TableCell>
@@ -65,4 +71,4 @@ const TableContent = ({
   );
 };
 
-export default TableContent;
+export default SkillTableContent;

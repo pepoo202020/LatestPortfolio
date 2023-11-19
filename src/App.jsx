@@ -14,6 +14,8 @@ import Categories from "./Pages/Dashboard/Categories";
 import ExperiencesDashboard from "./Pages/Dashboard/ExperiencesDashboard";
 import ProjectsDashboard from "./Pages/Dashboard/ProjectsDashboard";
 import ProfileDashboard from "./Pages/Dashboard/ProfileDashboard";
+import SkillCategories from "./Pages/Dashboard/Categories/SkillCategories";
+import ProjectCategories from "./Pages/Dashboard/Categories/ProjectCategories";
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
         <Route path="main" element={<Dashboard />} />
         <Route path="skills" element={<SkillsDashboard />} />
         <Route path="categories" element={<Categories />} />
+        <Route path="categories/skills" element={<SkillCategories />} />
+        <Route path="categories/projects" element={<ProjectCategories />} />
         <Route path="experiences" element={<ExperiencesDashboard />} />
         <Route path="projects" element={<ProjectsDashboard />} />
         <Route path="profile" element={<ProfileDashboard />} />
