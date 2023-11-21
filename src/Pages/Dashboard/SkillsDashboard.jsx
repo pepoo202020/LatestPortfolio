@@ -1,7 +1,6 @@
 import { Add, Cancel, Save } from "@mui/icons-material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import SkillTableContent from "./SkillTableContent";
 
 const skills = [
   { name: "skill 01", image: "01", id: 1 },
@@ -92,14 +91,7 @@ const SkillsDashboard = () => {
             className={`${
               skillTableVisible ? "" : "hidden"
             } overflow-hidden rounded-lg border border-gray-200 shadow-md my-5`}
-          >
-            <SkillTableContent
-              headNames={["Skill Image", "Skill Name", "Actions"]}
-              tableContent={skills}
-              editBtnHandler={() => editSkillBtnHandler()}
-              deleteBtnHandler={() => deleteSkillBtnHandler()}
-            />
-          </div>
+          ></div>
         )}
         {newSkillBtn && <div>Skill new</div>}
         {editSkillBtn && <div>Skill edit</div>}

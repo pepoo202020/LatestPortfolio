@@ -9,8 +9,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 const defaultFormValues = { email: "", password: "" };
 
@@ -18,6 +19,7 @@ const LoginPage = () => {
   const [formValues, setFormValues] = useState(defaultFormValues);
   const navigate = useNavigate();
   const { email, password } = formValues;
+  const [user, setUser] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,16 +27,21 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e) => {
+    const data = { email, password };
     e.preventDefault();
     if (!email && !password) {
       alert("All Fields are required");
       return;
     }
-    if (email === "poposhosh23@gmail.com" && password === "pop202020") {
-      alert("Logged in Successfully");
+    try {
+      const response = await axios.post(
+        "http://localhost:2000/api/admin/login",
+        data
+      );
+      alert(response.data.message);
       navigate("/dashboard/main");
-    } else {
-      alert("Email or Password is wrong");
+    } catch (error) {
+      alert(error.response.data);
     }
   };
 
