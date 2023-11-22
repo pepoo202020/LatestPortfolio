@@ -53,7 +53,7 @@ const DrawerLeft = ({ currentColorMode, currentMode, drawer, setDrawer }) => {
       open={drawer}
       onClose={() => setDrawer(false)}
     >
-      <Box sx={250} role="presentation">
+      <Box role="presentation">
         <div
           className={`
           ${currentMode ? "bg-white" : "bg-black"} 

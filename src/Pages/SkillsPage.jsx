@@ -1,129 +1,196 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ModeContext } from "../contexts/modeContext";
 import { ColorModeContext } from "../contexts/colorModeContext";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { Tooltip } from "@mui/material";
 
 const SkillsPage = () => {
   const { currentMode } = useContext(ModeContext);
   const { currentColorMode } = useContext(ColorModeContext);
+  const [skillsCates, setSkillsCate] = useState([]);
+  const [allSkills, setAllSkills] = useState(true);
+  const [frontend, setFrontend] = useState(false);
+  const [backend, setBackend] = useState(false);
+  const [databases, setDatabases] = useState(false);
+  const [servering, setServering] = useState(false);
+  const [others, setOthers] = useState(false);
+  const [defaukt, setDefault] = useState("");
+  const [skills, setSkills] = useState([]);
+  const [catID, setCatID] = useState("");
 
-  const skills = [
-    {
-      category: "Frontend",
-      content: [
-        {
-          name: "HTML",
+  useEffect(() => {
+    const fetchSkillsCate = async () => {
+      const response = await axios.get(
+        "http://localhost:2000/api/cates/skills/all"
+      );
+      setSkillsCate(response.data.skillCategories);
+    };
+    const fetchAllSkills = async () => {
+      const response = await axios.get("http://localhost:2000/api/skills/all");
+      setSkills(response.data.skills);
+    };
+    const fetch = async () => {
+      const response = await axios.get(
+        `http://localhost:2000/api/skills/filter/${catID}`
+      );
+      setSkills(response.data.skills);
+    };
 
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png",
-        },
-      ],
-    },
-    {
-      category: "Backend",
-      content: [
-        {
-          name: "Node Js",
-          image:
-            "https://static-00.iconduck.com/assets.00/node-js-icon-1901x2048-mk1e13df.png",
-        },
-      ],
-    },
-    {
-      category: "Databases",
-      content: [
-        {
-          name: "Mongo DB",
-          image:
-            "https://seeklogo.com/images/M/mongodb-logo-655F7D542D-seeklogo.com.png",
-        },
-      ],
-    },
-    {
-      category: "Databases",
-      content: [
-        {
-          name: "Mongo DB",
-          image:
-            "https://seeklogo.com/images/M/mongodb-logo-655F7D542D-seeklogo.com.png",
-        },
-      ],
-    },
-    {
-      category: "Servering",
-      content: [
-        {
-          name: "AWS",
-          image:
-            "https://cdn.iconscout.com/icon/free/png-256/free-aws-3215369-2673787.png",
-        },
-      ],
-    },
-    {
-      category: "Others",
-      content: [
-        {
-          name: "Flutter",
-          image:
-            "https://w7.pngwing.com/pngs/67/315/png-transparent-flutter-hd-logo-thumbnail.png",
-        },
-      ],
-    },
-  ];
+    fetchSkillsCate();
 
-  const SkillCategoryHandler = (cat_name) => {
+    if (catID === "") {
+      fetchAllSkills();
+    } else {
+      fetch();
+    }
+  }, [catID]);
+
+  const SkillCategoryHandler = (cat_name, id) => {
     switch (cat_name) {
       case "Frontend":
-        return "Frontend Skills";
+        setAllSkills(false);
+        setFrontend(true);
+        setBackend(false);
+        setDatabases(false);
+        setServering(false);
+        setOthers(false);
+        setDefault(cat_name);
+        setCatID(id);
+        break;
       case "Backend":
-        return "Backend Skills";
+        setAllSkills(false);
+        setFrontend(false);
+        setBackend(true);
+        setDatabases(false);
+        setServering(false);
+        setOthers(false);
+        setCatID(id);
+        setDefault(cat_name);
+        break;
       case "Databases":
-        return "Databases Skills";
+        setAllSkills(false);
+        setFrontend(false);
+        setBackend(false);
+        setDatabases(true);
+        setServering(false);
+        setOthers(false);
+        setCatID(id);
+        setDefault(cat_name);
+        break;
       case "Servering":
-        return "Servering Skills";
+        setAllSkills(false);
+        setFrontend(false);
+        setBackend(false);
+        setDatabases(false);
+        setServering(true);
+        setOthers(false);
+        setCatID(id);
+        setDefault(cat_name);
+        break;
+      case "Others":
+        setAllSkills(false);
+        setFrontend(false);
+        setBackend(false);
+        setDatabases(false);
+        setServering(false);
+        setOthers(true);
+        setCatID(id);
+        setDefault(cat_name);
+        break;
       default:
-        return "Other Skills";
+        setAllSkills(true);
+        setFrontend(false);
+        setBackend(false);
+        setDatabases(false);
+        setServering(false);
+        setOthers(false);
+        setCatID("");
+        setDefault(cat_name);
+        break;
     }
   };
+
   return (
     <div className="w-full h-full  lg:px-[30px] lg:py-[30px] px-[15px] pt-[15px] pb-[60px] ">
       <div
-        className={`rounded-3xl w-full h-full relative flex flex-wrap  items-start  overflow-y-auto justify-start lg:gap-5 ${
+        className={`rounded-3xl w-full h-full relative flex flex-col  items-start  overflow-y-auto justify-start lg:gap-5 ${
           currentMode ? "bg-white" : "bg-black"
         }`}
       >
         <div
-          className={`h-[50px] flex items-center sticky top-0 z-40 ${
+          className={`h-fit  flex flex-col gap-5 items-center sticky top-0  z-40 ${
             currentMode ? "bg-white" : "bg-black"
           } w-full`}
         >
-          <h1
-            className={`${
-              currentMode ? "text-black bg-gray-200" : "text-white bg-gray-700"
-            } px-[20px] rounded-xl mt-2  w-fit mx-auto `}
-          >
-            Skills
-          </h1>
-          <Link
-            to={"/login"}
-            className={`absolute top-1 left-1 ${currentColorMode.value} text-white lg:px-5 px-2 py-2 rounded-xl`}
-          >
-            Add New Skill
-          </Link>
-        </div>
-        <div className="w-full h-fit flex flex-col items-start justify-start gap-5 px-5">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-start justify-start gap-3"
+          <div className="flex items-center">
+            <h1
+              className={`${
+                currentMode
+                  ? "text-black bg-gray-200"
+                  : "text-white bg-gray-700"
+              } px-[20px] rounded-xl mt-2  w-fit mx-auto `}
             >
-              <h1
-                className={`${currentColorMode.textColor} font-bold text-2xl`}
+              Skills
+            </h1>
+            <Link
+              to={"/login"}
+              className={`absolute font-bold top-1  lg:text-base text-xs left-1 ${currentColorMode.value} text-white lg:px-5 p-2 rounded-xl`}
+            >
+              Add New Skill
+            </Link>
+          </div>
+          <div className="w-full h-fit flex flex-wrap  items-start justify-center lg:gap-2 gap-1 lg:px-5 px-2">
+            <h1
+              onClick={() => SkillCategoryHandler("All Skills")}
+              className={`${
+                allSkills
+                  ? ` bg-transparent border ${currentColorMode.borderColor} ${currentColorMode.textColor}`
+                  : `${currentColorMode.value} text-white`
+              }   font-bold lg:text-base text-xs p-1 rounded-lg cursor-pointer`}
+            >
+              All Skills
+            </h1>
+            {skillsCates.map((skillCate, index) => (
+              <div
+                key={index}
+                onClick={() =>
+                  SkillCategoryHandler(
+                    skillCate.skillCategoryName,
+                    skillCate._id
+                  )
+                }
+                className={`${
+                  defaukt === skillCate.skillCategoryName
+                    ? `bg-transparent border ${currentColorMode.borderColor} ${currentColorMode.textColor}`
+                    : `${currentColorMode.value} text-white`
+                }  font-bold lg:text-base text-xs p-1 rounded-lg cursor-pointer`}
               >
-                {SkillCategoryHandler(skill.category)}
-              </h1>
-              <div></div>
-            </div>
+                <h1>{skillCate.skillCategoryName}</h1>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          className={`  w-full flex flex-wrap items-center justify-center gap-5 mt-5 px-2`}
+        >
+          {skills.map((skill, index) => (
+            <Tooltip title={skill.skillName}>
+              <div
+                key={index}
+                className={`${
+                  currentMode ? "bg-gray-100/80" : "bg-gray-600/80"
+                } p-10 rounded-lg shadow-lg border cursor-pointer ${
+                  currentColorMode.borderColor
+                }`}
+              >
+                <img
+                  className="lg:w-32 w-16"
+                  src={skill.skillImage}
+                  alt={skill.skillName}
+                />
+              </div>
+            </Tooltip>
           ))}
         </div>
       </div>
