@@ -34,6 +34,7 @@ const ContactPage = () => {
       )
       .then((response) => {
         console.log("Message sent:", response.status, response.text);
+        alert(response.text);
       })
       .catch((error) => {
         console.error("Error sending message:", error);
