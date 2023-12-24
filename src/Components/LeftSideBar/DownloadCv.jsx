@@ -6,7 +6,7 @@ const DownloadCv = ({ currentMode, backgroundColor, borderColor }) => {
   return (
     <Link
       to={
-        "https://drive.google.com/uc?export=download&id=1wSDz0piRGywqlAMOjyzjjgHnbjb0Z5mr"
+        "https://drive.google.com/uc?export=download&id=1_fISAlQwNPOih2PIIIwK8a0DHdC2XtcI"
       }
       className={`${backgroundColor} ${
         currentMode
