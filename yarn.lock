@@ -2576,7 +2576,7 @@
     lz-string "^1.5.0"
     pretty-format "^27.0.2"
 
-"@testing-library/dom@>=7.21.4":
+"@testing-library/dom@^9.3.3", "@testing-library/dom@>=7.21.4":
   version "9.3.3"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-9.3.3.tgz"
   integrity sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==
