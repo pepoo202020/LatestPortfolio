@@ -11,16 +11,15 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../Utils/databaseConnect";
 
 const defaultFormValues = { email: "", password: "" };
 
 const LoginPage = () => {
   const [formValues, setFormValues] = useState(defaultFormValues);
-  const navigate = useNavigate();
   const { email, password } = formValues;
-  const [user, setUser] = useState([]);
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -33,16 +32,7 @@ const LoginPage = () => {
       alert("All Fields are required");
       return;
     }
-    try {
-      const response = await axios.post(
-        "http://localhost:2000/api/admin/login",
-        data
-      );
-      alert(response.data.message);
-      navigate("/dashboard/main");
-    } catch (error) {
-      alert(error.response.data);
-    }
+    await loginUser(data, navigate);
   };
 
   return (

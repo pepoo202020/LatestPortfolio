@@ -13,9 +13,9 @@ import SkillsDashboard from "./Pages/Dashboard/SkillsDashboard";
 import Categories from "./Pages/Dashboard/Categories";
 import ExperiencesDashboard from "./Pages/Dashboard/ExperiencesDashboard";
 import ProjectsDashboard from "./Pages/Dashboard/ProjectsDashboard";
-import ProfileDashboard from "./Pages/Dashboard/ProfileDashboard";
 import SkillCategories from "./Pages/Dashboard/Categories/SkillCategories";
 import ProjectCategories from "./Pages/Dashboard/Categories/ProjectCategories";
+import SkillsPageAdmin from "./Pages/SkillsPageAdmin";
 
 export default function App() {
   return (
@@ -24,6 +24,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="skills" element={<SkillsPage />} />
+        <Route path="skills/me" element={<SkillsPageAdmin />} />
         <Route path="experience" element={<ExpreiencePage />} />
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="contact" element={<ContactPage />} />
@@ -37,7 +38,6 @@ export default function App() {
         <Route path="categories/projects" element={<ProjectCategories />} />
         <Route path="experiences" element={<ExperiencesDashboard />} />
         <Route path="projects" element={<ProjectsDashboard />} />
-        <Route path="profile" element={<ProfileDashboard />} />
       </Route>
     </Routes>
   );

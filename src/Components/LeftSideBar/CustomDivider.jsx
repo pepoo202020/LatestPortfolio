@@ -5,7 +5,7 @@ const CustomDivider = ({ currentMode }) => {
     <div
       className={`w-full h-px border ${
         currentMode ? "border-gray-100" : "border-gray-400"
-      } mb-[20px]`}
+      } mb-[10px]`}
     ></div>
   );
 };

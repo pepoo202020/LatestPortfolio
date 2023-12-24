@@ -1,9 +1,13 @@
 import { Downloading } from "@mui/icons-material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DownloadCv = ({ currentMode, backgroundColor, borderColor }) => {
   return (
-    <div
+    <Link
+      to={
+        "https://drive.google.com/uc?export=download&id=1EWaPIcjejEMfL1YDVjONjqgLLByalZ-P"
+      }
       className={`${backgroundColor} ${
         currentMode
           ? backgroundColor === "bg-red-500"
@@ -14,7 +18,7 @@ const DownloadCv = ({ currentMode, backgroundColor, borderColor }) => {
     >
       <div className="text-sm font-semibold uppercase">Download Cv</div>
       <Downloading />
-    </div>
+    </Link>
   );
 };
 

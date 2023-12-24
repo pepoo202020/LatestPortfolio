@@ -4,6 +4,7 @@ import projectsIcon from "../../Assets/icons/clipboard.png";
 import { Link } from "react-router-dom";
 import { ArrowCircleRight } from "@mui/icons-material";
 import axios from "axios";
+import { fetchProjectCate, fetchSkillsCate } from "../../Utils/databaseConnect";
 const cates = [
   { name: "Skills Categories", link: "skills", image: skillsIcon },
   { name: "Projects Categories", link: "projects", image: projectsIcon },
@@ -16,23 +17,14 @@ const Categories = () => {
 
   useEffect(() => {
     const fetchCates = async () => {
-      try {
-        const responseSkills = await axios.get(
-          "http://localhost:2000/api/cates/skills/all"
-        );
-        const responseProjects = await axios.get(
-          "http://localhost:2000/api/cates/projects/all"
-        );
-        setSkillsCategoryNo(responseSkills.data.no);
-        setProjectsCategoryNo(responseProjects.data.no);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("error", error.response.data);
-      }
+      const fetchedSkillsCate = await fetchSkillsCate();
+      setSkillsCategoryNo(fetchedSkillsCate.length);
+      const fetchedProjectsCate = await fetchProjectCate();
+      setProjectsCategoryNo(fetchedProjectsCate.length);
     };
-
+    setLoading(true);
     fetchCates();
+    setLoading(false);
   }, []);
 
   if (loading) {

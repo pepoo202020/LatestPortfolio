@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ModeContext } from "../contexts/modeContext";
 import { ColorModeContext } from "../contexts/colorModeContext";
 import profileImage from "../Assets/photo.jpeg";
+import ProfileSpan from "../Components/profilePage/ProfileSpan";
 
 const ProfilePage = () => {
   const { currentMode } = useContext(ModeContext);
@@ -40,40 +41,35 @@ const ProfilePage = () => {
             <p>
               I am Abanob Shenoda a communications and electronics engineer. I
               graduated from Assiut University with a{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold capitalize`}
-              >
-                good
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"good"}
+              />{" "}
               general grade, and an{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold capitalize`}
-              >
-                Excellent
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Excellent"}
+              />{" "}
               grade in the graduation project for the black box.
             </p>
             <p>
               My programming story began in college and I learned{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                C++
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"C++"}
+              />
               , and after that my passion for learning programming languages
               increased. I learned mobile languages through YouTube, starting
               with{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                Java
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Java"}
+              />{" "}
               and{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                Android Studio
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Android Studio"}
+              />
               , and I only learned the primitives.
             </p>
             <p>
@@ -81,44 +77,38 @@ const ProfilePage = () => {
               I started learning the languages of the web, and I understood that
               the world in web was divided into Front and Backend, and I started
               learning the basics along with the programming languages{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                html
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"html"}
+              />
               ,
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                css
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"css"}
+              />
               , and I worked on two projects on them and learned the languages{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                JS
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"JS"}
+              />
               ,{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                Bootstrap
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Bootstrap"}
+              />
               , and{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                JQuery
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"JQuery"}
+              />{" "}
               with them.
             </p>
             <p>
               After that, I joined the{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                EGFWD
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"EGFWD"}
+              />{" "}
               scholarship provided by the Egyptian Ministry of Communications. I
               started the basics course in Frontand, and finished it quickly
               because I knew the basics from YouTube, and I received the
@@ -130,45 +120,39 @@ const ProfilePage = () => {
               to join it and passed it. I joined and returned the scholarship
               after 3 months. Then I joined the Professional level. I took the
               exam before that and succeeded in joining it. I took a{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                fullstack
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"fullstack"}
+              />
               in it using JavaScript and learned databases like{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                Postgres Sql
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Postgres Sql"}
+              />{" "}
               from it and also{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                AWS
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"AWS"}
+              />
               .
             </p>
             <p>
               During this time, I learned new languages for the Flutter and Dart
               mobile phones, and in Web leared{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                React
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"React"}
+              />{" "}
               and basics of{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                Next
-              </span>{" "}
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Next"}
+              />{" "}
               and{" "}
-              <span
-                className={`${currentColorMode.textColor} font-semibold uppercase`}
-              >
-                Mongo DB
-              </span>
+              <ProfileSpan
+                textColor={currentColorMode.textColor}
+                content={"Mongo DB"}
+              />
             </p>
           </div>
           <div className="lg:w-1/2 flex  lg;mb-0 mb-5 items-center justify-center">

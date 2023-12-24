@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ModeContext } from "../contexts/modeContext";
 import { ColorModeContext } from "../contexts/colorModeContext";
+import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import {
   fetchAllSkills,
@@ -10,7 +11,7 @@ import {
 import { SkillCategoryHandler } from "../Utils/util";
 import Loader from "../Components/Loader";
 
-const SkillsPage = () => {
+const SkillsPageAdmin = () => {
   const { currentMode } = useContext(ModeContext);
   const { currentColorMode } = useContext(ColorModeContext);
   const [skillsCates, setSkillsCate] = useState([]);
@@ -71,6 +72,12 @@ const SkillsPage = () => {
             >
               Skills
             </h1>
+            <Link
+              to={"/login"}
+              className={`absolute font-bold top-1  lg:text-base text-xs left-1 ${currentColorMode.value} text-white lg:px-5 p-2 rounded-xl`}
+            >
+              Add New Skill
+            </Link>
           </div>
           <div className="w-full h-fit flex flex-wrap  items-start justify-center lg:gap-2 gap-1 lg:px-5 px-2">
             <h1
@@ -159,4 +166,4 @@ const SkillsPage = () => {
   );
 };
 
-export default SkillsPage;
+export default SkillsPageAdmin;

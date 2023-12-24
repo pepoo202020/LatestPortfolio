@@ -3,13 +3,12 @@ import {
   Code,
   DashboardOutlined,
   Logout,
-  Person,
   Work,
   WorkHistory,
 } from "@mui/icons-material";
 import { Tooltip } from "@mui/material";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const links = [
   {
@@ -38,11 +37,7 @@ const links = [
     icon: <WorkHistory />,
     link: "/dashboard/projects",
   },
-  {
-    name: "Profile",
-    icon: <Person />,
-    link: "/dashboard/profile",
-  },
+
   {
     name: "Logout",
     icon: <Logout />,

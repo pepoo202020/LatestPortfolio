@@ -13,6 +13,20 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import {
+  createNewProjectCategory,
+  deleteProjectCategory,
+  fetchProjectCategories,
+  getAProjectCategory,
+  updateProjectCategory,
+} from "../../../Utils/databaseConnect";
+import {
+  cancelBtnHandlre,
+  editAndSaveHandler,
+  editBtnHandler,
+  newBtnHandler,
+  saveBtnHandler,
+} from "../../../Utils/util";
 
 const ProjectCategories = () => {
   const [newProjectCateBtn, setNewProjectCateBtn] = useState(false);
@@ -31,91 +45,62 @@ const ProjectCategories = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
+
     const fetchProjects = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:2000/api/cates/projects/all"
-        );
-        setProjectsCategories(response.data.projectCates);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("error", error.response.data);
-      }
+      const fetchedCategory = await fetchProjectCategories();
+      setProjectsCategories(fetchedCategory);
     };
     fetchProjects();
+    setLoading(false);
   }, [projectsCategories]);
 
-  const newProjectCateBtnHandler = () => {
-    setEditProjectCateBtn(false);
-    setNewProjectCateBtn(true);
-    setSaveAndCancelBtn(true);
-    setProjectTableVisible(false);
-  };
-
   const saveProjectCateBtnHandler = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:2000/api/cates/projects/new",
-        { categoryName: categoryName }
-      );
-      alert(response.data.message);
-      setNewProjectCateBtn(false);
-      setProjectTableVisible(true);
-      setSaveAndCancelBtn(false);
-      setEditAndnewProjectCateBtn(false);
-      setEditProjectCateBtn(false);
-      setCategoryName("");
-    } catch (error) {
-      console.error("error", error.response.data);
-    }
+    createNewProjectCategory(categoryName);
+    saveBtnHandler(
+      "projectCate",
+      setNewProjectCateBtn,
+      setSaveAndCancelBtn,
+      setProjectTableVisible,
+      setEditProjectCateBtn,
+      setEditAndnewProjectCateBtn,
+      "",
+      "",
+      "",
+      setCategoryName
+    );
   };
 
   const editAndSaveCateHandler = async () => {
-    try {
-      const response = await axios.put(
-        `http://localhost:2000/api/cates/projects/${cateID}`,
-        { categoryName: categoryName }
-      );
-      alert(response.data.message);
-      setNewProjectCateBtn(false);
-      setProjectTableVisible(true);
-      setSaveAndCancelBtn(false);
-      setEditAndnewProjectCateBtn(false);
-      setEditProjectCateBtn(false);
-      setCategoryName("");
-    } catch (error) {
-      console.error("error", error.response.data);
-    }
+    updateProjectCategory(categoryName, cateID);
+    editAndSaveHandler(
+      "projectCate",
+      setNewProjectCateBtn,
+      setSaveAndCancelBtn,
+      setProjectTableVisible,
+      setEditProjectCateBtn,
+      setEditAndnewProjectCateBtn,
+      "",
+      "",
+      "",
+      setCategoryName
+    );
   };
 
-  const cancelProjectCateBtnHandlre = () => {
-    setNewProjectCateBtn(false);
-    setSaveAndCancelBtn(false);
-    setProjectTableVisible(true);
-    setEditAndnewProjectCateBtn(false);
-    setEditProjectCateBtn(false);
+  const editProjectCateBtnHandler = async (id) => {
+    const fetchedCategory = await getAProjectCategory(id);
+    setCategoryName(fetchedCategory);
+    editBtnHandler(
+      "projectCate",
+      setSaveAndCancelBtn,
+      setProjectTableVisible,
+      setEditProjectCateBtn,
+      setEditAndnewProjectCateBtn,
+      setCateID,
+      id
+    );
   };
 
-  const editProjectCateBtnHandler = (id) => {
-    setCateID(id);
-    setEditProjectCateBtn(true);
-    setSaveAndCancelBtn(true);
-    setProjectTableVisible(false);
-    setEditAndnewProjectCateBtn(true);
-    setCategoryName("");
-  };
-
-  const deleteProjectCateBtnHandler = async (id) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:2000/api/cates/projects/${id}`
-      );
-      alert(response.data.message);
-    } catch (error) {
-      alert("error", error.response.data);
-    }
-  };
   if (loading) {
     return (
       <div className=" w-full  px-5 ">
@@ -138,7 +123,19 @@ const ProjectCategories = () => {
           </h1>
           {!editAndnewProjectCateBtn && (
             <Link
-              onClick={newProjectCateBtnHandler}
+              onClick={() =>
+                newBtnHandler(
+                  "projectCate",
+                  setNewProjectCateBtn,
+                  setSaveAndCancelBtn,
+                  setProjectTableVisible,
+                  setEditProjectCateBtn,
+                  "",
+                  "",
+                  "",
+                  setCategoryName
+                )
+              }
               className={`${
                 newProjectCateBtn ? "hidden" : ""
               } px-2 py-1 bg-green-500 text-white rounded-xl hover:text-black hover:bg-transparent hover:border hover:border-green-500 transition-all`}
@@ -159,7 +156,20 @@ const ProjectCategories = () => {
                 <Save /> <span className="lg:inline-block hidden">Save</span>
               </Link>
               <Link
-                onClick={cancelProjectCateBtnHandlre}
+                onClick={() =>
+                  cancelBtnHandlre(
+                    "projectCate",
+                    setNewProjectCateBtn,
+                    setSaveAndCancelBtn,
+                    setProjectTableVisible,
+                    setEditProjectCateBtn,
+                    setEditAndnewProjectCateBtn,
+                    "",
+                    "",
+                    "",
+                    setCategoryName
+                  )
+                }
                 className="px-2 py-1 bg-red-500 text-white rounded-xl hover:text-black hover:bg-transparent hover:border hover:border-red-500 transition-all"
               >
                 <Cancel />{" "}
@@ -209,9 +219,7 @@ const ProjectCategories = () => {
                           <span className="lg:inline-block hidden">Edit</span>
                         </Link>
                         <Link
-                          onClick={() =>
-                            deleteProjectCateBtnHandler(content._id)
-                          }
+                          onClick={() => deleteProjectCategory(content._id)}
                           className="p-2   bg-red-500 text-white rounded-xl "
                         >
                           <Delete className="mobile" />{" "}
