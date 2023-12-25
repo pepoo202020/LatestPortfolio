@@ -1,4 +1,5 @@
 import { TextField, Tooltip } from "@mui/material";
+import Multiselect from "multiselect-react-dropdown";
 import React from "react";
 
 const SkillForm = ({
@@ -60,6 +61,8 @@ const SkillForm = ({
             onChange={(e) => setSkillCategory(e.target.value)}
             className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
           >
+            <option value={""}>Select Skill Category</option>
+
             {skillsCates.map((skillCate, index) => (
               <option key={index} value={skillCate.skillCategoryName}>
                 {skillCate.skillCategoryName}

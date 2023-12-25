@@ -81,6 +81,8 @@ const SkillsDashboard = () => {
   };
 
   const editAndSaveSkillHandler = async () => {
+    console.log(skillName, skillCategory);
+
     try {
       updateSkill(skillName, skillImage, skillCategory, skillID);
       editAndSaveHandler(
