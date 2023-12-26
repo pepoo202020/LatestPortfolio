@@ -89,7 +89,7 @@ const ProjectTable = ({
                 </Link>
               </td>
               <td className={`lg:table-cell hidden px-5 py-5 `}>
-                <div className="flex gap-1 items-center">
+                <div className="flex flex-wrap gap-1 items-center">
                   {project.projectDetails.skills_used.length === 0
                     ? ""
                     : project.projectDetails.skills_used.map((skill, index) => (
@@ -113,7 +113,7 @@ const ProjectTable = ({
                 </div>
               </td>
               <td className={`lg:table-cell hidden px-5 py-5`}>
-                <div className="flex gap-1 items-center">
+                <div className="flex flex-wrap gap-1 items-center">
                   {project.projectDetails.programs.length === 0
                     ? ""
                     : project.projectDetails.programs.map((program, index) => (
@@ -129,7 +129,7 @@ const ProjectTable = ({
               <td
                 className={`lg:table-cell hidden px-5 py-5 lg:text-base text-xs`}
               >
-                <div className="flex gap-1 items-center">
+                <div className="flex flex-wrap gap-1 items-center">
                   {project.projectDetails.project_Categories.length === 0
                     ? ""
                     : project.projectDetails.project_Categories.map(
