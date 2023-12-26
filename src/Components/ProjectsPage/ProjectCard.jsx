@@ -43,7 +43,7 @@ const ProjectCard = ({
         >
           {project.projectDetails.title}
         </h4>
-        <div className="mb-2 flex items-center flex-wrap gap-2">
+        <div className="mb-2 flex  items-center flex-wrap gap-2">
           {project.projectDetails.project_Categories.map((cate, index) => (
             <div
               key={index}
@@ -70,7 +70,7 @@ const ProjectCard = ({
         ) : (
           <div className="flex mb-2 items-center flex-wrap gap-3 text-sm">
             <h1 className="font-bold lg:text-base text-xs">Skills:</h1>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-1">
               {project.projectDetails.skills_used.map((skill, index) => (
                 <div
                   key={index}
@@ -92,7 +92,7 @@ const ProjectCard = ({
         ) : (
           <div className="flex mb-10 items-center flex-wrap gap-3 text-sm">
             <h1 className="font-bold lg:text-base text-xs">Programs:</h1>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-1">
               {project.projectDetails.programs.map((program, index) => (
                 <div
                   key={index}
