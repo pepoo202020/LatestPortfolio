@@ -34,7 +34,7 @@ const socials = [
   },
   {
     name: "linkedin",
-    link: "https://linkedin.com/poposhosh23",
+    link: "https://www.linkedin.com/in/abanobshenoda",
     icon: <img className="w-3.5" src={linkedinIcon} alt="linkedin" />,
   },
   {
